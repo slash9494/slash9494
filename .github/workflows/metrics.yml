@@ -38,3 +38,16 @@ jobs:
           plugin_topics: yes
           plugin_topics_limit: 0
           plugin_topics_mode: icons
+      - uses: actions/checkout@v2
+      - uses: yoshi389111/github-profile-3d-contrib@0.5.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+      - name: Commit & Push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A .
+          git commit -m "generated"
+          git push
+
