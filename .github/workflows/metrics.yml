@@ -2,7 +2,6 @@ name: Metrics
 on:
   # Schedule updates (each hour)
   schedule: [{cron: "0 16 * * *"}]
-  # Lines below let you run workflow manually and on each commit
   workflow_dispatch:
   push: { branches: ["master", "main"] }
 jobs:
@@ -11,13 +10,6 @@ jobs:
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          # Your GitHub token
-          # The following scopes are required:
-          #  - public_access (default scope)
-          # The following additional scopes may be required:
-          #  - read:org  (for organization related metrics)
-          #  - read:user (for user related data)
-          #  - repo      (optional, if you want to include private repositories)
           token: ${{ secrets.METRICS_TOKEN }}
 
           # Options
@@ -28,6 +20,10 @@ jobs:
           plugin_topics: yes
           plugin_topics_limit: 0
           plugin_topics_mode: icons
+          plugin_notable: yes
+          plugins_errors_fatal: yes
+          plugin_notable_indepth: yes
+          plugin_notable_repositories: yes
       - uses: actions/checkout@v2
       - uses: yoshi389111/github-profile-3d-contrib@0.5.0
         env:
