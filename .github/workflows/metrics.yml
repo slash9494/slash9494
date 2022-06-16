@@ -22,7 +22,6 @@ jobs:
           plugin_topics_mode: icons
           plugin_notable: yes
           plugins_errors_fatal: yes
-          plugin_notable_indepth: yes
           plugin_notable_repositories: yes
           plugin_notable_filter: fork:true
       - uses: actions/checkout@v2
