@@ -24,13 +24,4 @@ jobs:
           plugins_errors_fatal: yes
           plugin_notable_repositories: yes
           plugin_notable_filter: stars:>100
-      - uses: actions/checkout@v2
-      - name: Commit & Push
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git pull
-          git add -A .
-          git commit -m "generated"
-          git push
 
